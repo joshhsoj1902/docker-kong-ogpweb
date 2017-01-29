@@ -10,3 +10,4 @@ RUN echo "kong.dustless.club" > /var/www/html/modules/gamemanager/rsync_sites_lo
 
 # Setup rsync games
 RUN echo "openttd" > /var/www/html/modules/gamemanager/rsync.list
+RUN echo "terraria" > /var/www/html/modules/gamemanager/rsync.list
