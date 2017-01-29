@@ -14,3 +14,5 @@ RUN echo "" > /var/www/html/modules/gamemanager/rsync_sites.list
 # Setup rsync games
 RUN echo "openttd" > /var/www/html/modules/gamemanager/rsync.list
 RUN echo "terraria" > /var/www/html/modules/gamemanager/rsync.list
+
+COPY www /var/www/html
