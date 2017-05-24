@@ -9,3 +9,4 @@ jobs:
           name: "Build Image"
           command: |
             make build
+
