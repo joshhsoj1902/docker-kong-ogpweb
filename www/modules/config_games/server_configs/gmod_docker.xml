@@ -1,0 +1,44 @@
+<game_config>
+  <game_key>gmod_docker</game_key>
+  <game_name>1 Gmod Docker</game_name>
+  <console_log>ServerLog.txt</console_log>
+  <max_user_amount>8</max_user_amount>
+  <mods>
+    <mod key="none">
+      <name>none</name>
+    </mod>
+  </mods>
+  <replace_texts>
+    <text key="home_name">
+      <default>("ServerName"\s*:\s*")(.*)(",)</default>
+      <var>"ServerName": "%key%",</var>
+      <filepath>config.json</filepath>
+      <options>key-regex</options>
+    </text>
+    <text key="port">
+      <default>("ServerPort"\s*:\s*)(.*)(,)</default>
+      <var>"ServerPort": %key%,</var>
+      <filepath>config.json</filepath>
+      <options>key-regex</options>
+    </text>
+    <text key="true">
+      <default>("RestApiEnabled"\s*:\s*)(.*)(,)</default>
+      <var>"RestApiEnabled": true,</var>
+      <filepath>config.json</filepath>
+      <options>key-regex</options>
+    </text>
+  </server_params>
+  <custom_fields>
+    <field key="SpawnProtection" type="select">
+      <option value="false">False</option>
+      <option value="true">True</option>
+      <default>("SpawnProtection"\s*:\s*)(.*)(,)</default>
+      <default_value>false</default_value>
+      <var>"SpawnProtection": %key%,</var>
+      <filepath>config.json</filepath>
+      <options>key-regex</options>
+      <desc>Should Spawn be protected</desc>
+    </field>
+
+  </custom_fields>
+</game_config>
