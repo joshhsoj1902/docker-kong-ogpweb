@@ -1,6 +1,7 @@
 <game_config>
-  <game_key>gmod_docker</game_key>
+  <game_key>gmod_docker_linux32</game_key>
   <game_name>1 Gmod Docker</game_name>
+  <server_exec_name>foo.sh</server_exec_name>
   <console_log>ServerLog.txt</console_log>
   <max_user_amount>8</max_user_amount>
   <mods>
@@ -9,35 +10,116 @@
     </mod>
   </mods>
   <replace_texts>
-    <text key="home_name">
-      <default>("ServerName"\s*:\s*")(.*)(",)</default>
-      <var>"ServerName": "%key%",</var>
-      <filepath>config.json</filepath>
-      <options>key-regex</options>
-    </text>
     <text key="port">
-      <default>("ServerPort"\s*:\s*)(.*)(,)</default>
-      <var>"ServerPort": %key%,</var>
-      <filepath>config.json</filepath>
-      <options>key-regex</options>
+      <default>(LGSM_PORT\s*:\s*)(.*)</default>
+      <var>port:</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
     </text>
-    <text key="true">
-      <default>("RestApiEnabled"\s*:\s*)(.*)(,)</default>
-      <var>"RestApiEnabled": true,</var>
-      <filepath>config.json</filepath>
-      <options>key-regex</options>
+    <text key="image_name">
+      <var>image: joshhsoj1902/gmod-docker</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
     </text>
-  </server_params>
+
+
+  </replace_texts>
   <custom_fields>
-    <field key="SpawnProtection" type="select">
-      <option value="false">False</option>
-      <option value="true">True</option>
-      <default>("SpawnProtection"\s*:\s*)(.*)(,)</default>
-      <default_value>false</default_value>
-      <var>"SpawnProtection": %key%,</var>
-      <filepath>config.json</filepath>
-      <options>key-regex</options>
+    <field key="LGSM_GAMEMODE" type="text">
+      <default>property</default>
+      <default_value>sandbox</default_value>
+      <var>      - LGSM_GAMEMODE=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>s</desc>
+    </field>
+    <field key="LGSM_DEFAULTMAP" type="text">
+      <default>property</default>
+      <default_value>gm_construct</default_value>
+      <var>      - LGSM_DEFAULTMAP=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
       <desc>Should Spawn be protected</desc>
+    </field>
+    <field key="image_version" type="text">
+      <default>property</default>
+      <default_value>latest</default_value>
+      <var>version:</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
+      <desc>Should Spawn be protected</desc>
+    </field>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <field key="tagValueByName" type="text">
+      <default>property</default>
+      <default_value>40</default_value>
+      <var>tagValueByName</var>
+      <filepath>docker-test.yml</filepath>
+      <options>tagValueByName</options>
+      <desc>How many minutes should 24 hours take</desc>
+    </field>
+    <field key="tags" type="text">
+      <default>property</default>
+      <default_value>40</default_value>
+      <var>tags</var>
+      <filepath>docker-test.yml</filepath>
+      <options>tags</options>
+      <desc>tags</desc>
+    </field>
+    <field key="q" type="text">
+      <default>property</default>
+      <default_value>40</default_value>
+      <var>q</var>
+      <filepath>docker-test.yml</filepath>
+      <options>q</options>
+      <desc>q</desc>
+    </field>
+    <field key="s" type="text">
+      <default>property</default>
+      <default_value>40</default_value>
+      <var>s</var>
+      <filepath>docker-test.yml</filepath>
+      <options>s</options>
+      <desc>s</desc>
+    </field>
+    <field key="sq" type="text">
+      <default>property</default>
+      <default_value>40</default_value>
+      <var>sq</var>
+      <filepath>docker-test.yml</filepath>
+      <options>sq</options>
+      <desc>sq</desc>
+    </field>
+    <field key="sc" type="text">
+      <default>property</default>
+      <default_value>40</default_value>
+      <var>sc</var>
+      <filepath>docker-test.yml</filepath>
+      <options>sc</options>
+      <desc>sc</desc>
+    </field>
+    <field key="sqc" type="text">
+      <default>property</default>
+      <default_value>40</default_value>
+      <var>sqc</var>
+      <filepath>docker-test.yml</filepath>
+      <options>sqc</options>
+      <desc>sqc</desc>
     </field>
 
   </custom_fields>
