@@ -11,18 +11,29 @@
   </mods>
   <replace_texts>
     <text key="port">
-      <default>(LGSM_PORT\s*:\s*)(.*)</default>
+      <default>(port:\s*)(.*)</default>
       <var>port:</var>
       <filepath>docker-config.yml</filepath>
       <options>s</options>
     </text>
-    <text key="image_name">
-      <var>image: joshhsoj1902/gmod-docker</var>
+    <text key="image_namespace">
+      <default>(namespace:\s*)(.*)</default>
+      <var>namespace: joshhsoj1902</var>
       <filepath>docker-config.yml</filepath>
       <options>s</options>
     </text>
-
-
+    <text key="image_name">
+      <default>(image:\s*)(.*)</default>
+      <var>image: gmod-docker</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
+    </text>
+    <text key="max_players">
+      <default>(maxplayers:\s*)(.*)</default>
+      <var>maxplayers:</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
+    </text>
   </replace_texts>
   <custom_fields>
     <field key="LGSM_GAMEMODE" type="text">
