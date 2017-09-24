@@ -9,7 +9,7 @@ services:
       - MYSQL_PORT=3306
       - MYSQL_DBNAME=opengamepanel
       - MYSQL_USER=ogpuser
-      - MYSQL_PASS=foo
+      - MYSQL_PASS=Cpvx8B
       - MYSQL_PREFIX=ogp_
     ports:
       - "10001:80"
@@ -24,7 +24,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=opengamepanel
       - MYSQL_USER=ogpuser
-      - MYSQL_PASSWORD=foo
+      - MYSQL_PASSWORD=Cpvx8B
     volumes:
       - /var/lib/mysql
   agent:
