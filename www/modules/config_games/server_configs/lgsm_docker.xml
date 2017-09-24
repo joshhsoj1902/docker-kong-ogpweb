@@ -43,7 +43,6 @@
       <default>gmodserver</default>
       <var>      - LGSM_GAMESERVERNAME=</var>
       <filepath>docker-environment.yml</filepath>
-      <caption>Which game type to start</caption>
       <desc>Which game type to start</desc>
     </field>
     <field key="LGSM_GAMEMODE" type="text">
