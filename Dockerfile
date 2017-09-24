@@ -19,3 +19,4 @@ RUN echo "terraria" >> /var/www/html/modules/gamemanager/rsync.list
 COPY www /var/www/html
 
 ADD validate-xml-config.sh /
+RUN chmod 777 /validate-xml-config.sh
