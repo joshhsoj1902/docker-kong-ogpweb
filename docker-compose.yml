@@ -1,0 +1,40 @@
+version: '2'
+services:
+  web:
+    image: joshhsoj1902/docker-kong-ogpweb
+    restart: always
+    environment:
+      - OGP_INSTALL=false
+      - MYSQL_IP=my_db
+      - MYSQL_PORT=3306
+      - MYSQL_DBNAME=opengamepanel
+      - MYSQL_USER=ogpuser
+      - MYSQL_PASS=foo
+      - MYSQL_PREFIX=ogp_
+    ports:
+      - "10001:80"
+    links:
+      - db:my_db
+    depends_on:
+      - db
+  db:
+    restart: always
+    image: mysql:5.6
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=opengamepanel
+      - MYSQL_USER=ogpuser
+      - MYSQL_PASSWORD=foo
+    volumes:
+      - /var/lib/mysql
+  agent:
+    restart: always
+    image: joshhsoj1902/docker-ogpagent-docker
+    ports:
+     - "12679:12679"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - OGP_LISTEN_PORT=12679
+      - OGP_KEY=encryption_key2
+      - OGP_DOCKER_NAMESPACE=joshhsoj1902
