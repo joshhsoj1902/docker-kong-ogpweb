@@ -45,7 +45,8 @@
 
     <field key="lgsm_gameservername" type="select">
       <option value="gmodserver">Gmod</option>
-      <option value="mumbleserver">mumble</option>
+      <option value="l4d2server">L4D2</option>
+      <option value="l4dserver">L4D</option>
       <default>property</default>
       <default_value>gmodserver</default_value>
       <var>      - LGSM_GAMESERVERNAME=</var>
@@ -61,7 +62,7 @@
       <var>      - LGSM_UPDATEINSTALLSKIP=</var>
       <filepath>docker-environment.yml</filepath>
     </field>
-    <field key="LGSM_GAMEMODE" type="text">
+    <!-- <field key="LGSM_GAMEMODE" type="text">
       <default>property</default>
       <default_value>sandbox</default_value>
       <var>      - LGSM_GAMEMODE=</var>
@@ -75,7 +76,7 @@
       <var>      - LGSM_DEFAULTMAP=</var>
       <filepath>docker-environment.yml</filepath>
       <options></options>
-    </field>
+    </field> -->
     <field key="image_version" type="text">
       <default>property</default>
       <default_value>latest</default_value>
@@ -83,15 +84,5 @@
       <filepath>docker-config.yml</filepath>
       <options>s</options>
     </field>
-
-
-
-
-
-
-
-
-
-
   </custom_fields>
 </game_config>
