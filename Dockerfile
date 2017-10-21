@@ -1,3 +1,12 @@
+# FROM python:latest as configs
+
+# ADD xmlcombine.xml .
+
+# COPY modules/config_games/server_configs configs
+
+# RUN python xmlcombine.py ?.xml > combined.xml
+
+
 FROM joshhsoj1902/docker-ogpweb
 
 MAINTAINER joshhsoj1902
@@ -17,6 +26,7 @@ RUN echo "openttd" >> /var/www/html/modules/gamemanager/rsync.list
 RUN echo "terraria" >> /var/www/html/modules/gamemanager/rsync.list
 
 COPY www /var/www/html
+COPY config_templates /var/www/html/modules/config_games/server_configs/
 
 ADD validate-xml-config.sh /
 RUN chmod 777 /validate-xml-config.sh
