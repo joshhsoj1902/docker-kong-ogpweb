@@ -8,6 +8,8 @@ RUN mkdir gomplate_snippets \
 
 FROM hairyhenderson/gomplate as config
 
+ENTRYPOINT [ "sh" ]
+
 ADD gomplate-build.sh .
 
 COPY config_templates/templates templates
@@ -19,6 +21,7 @@ RUN mkdir server_configs \
     &&./gomplate-build.sh
 
 RUN ls -ltr server_configs
+
 
 FROM joshhsoj1902/docker-ogpweb
 
