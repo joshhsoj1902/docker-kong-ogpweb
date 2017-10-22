@@ -8,7 +8,7 @@ RUN mkdir gomplate_snippets \
 
 FROM hairyhenderson/gomplate as config
 
-ENTRYPOINT [ "sh" ]
+# ENTRYPOINT [ "sh" ]
 
 ADD gomplate-build.sh .
 
@@ -18,6 +18,7 @@ COPY --from=snippets gomplate_snippets/ ./gomplate_snippets/
 
 RUN mkdir server_configs \
     && chmod +x ./gomplate-build.sh \ 
+    && sleep 1 \
     &&./gomplate-build.sh
 
 RUN ls -ltr server_configs
