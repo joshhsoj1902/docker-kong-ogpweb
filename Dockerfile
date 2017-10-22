@@ -1,21 +1,22 @@
 FROM ubuntu:16.04 as snippets
 
 ADD build-gomplate-snippets.sh .
-COPY config_templates config_templates
-RUN sh build-gomplate-snippets.sh
+COPY config_templates/xml_snippets xml_snippets
+RUN mkdir gomplate_snippets \
+    && sh build-gomplate-snippets.sh
 
 
 FROM hairyhenderson/gomplate as config
 
-COPY config_templates config_templates
+COPY config_templates/templates templates
 
-COPY --from=snippets /config_templates/gomplate_snippets/ ./config_templates/gomplate_snippets/
+COPY --from=snippets gomplate_snippets/ ./gomplate_snippets/
 
-RUN /gomplate -d snippets=file://./config_templates/gomplate_snippets/snippets.json \
-            -f config_templates/templates/lgsm_docker.tmpl.xml \
-            -o config_templates/lgsm_docker_foo.xml
+RUN /gomplate -d snippets=file://./gomplate_snippets/snippets.json \
+            -f templates/lgsm_docker.tmpl.xml \
+            -o lgsm_docker_foo.xml
 
-RUN cat config_templates/lgsm_docker_foo.xml
+RUN cat lgsm_docker_foo.xml
 
 RUN exit -1
 
