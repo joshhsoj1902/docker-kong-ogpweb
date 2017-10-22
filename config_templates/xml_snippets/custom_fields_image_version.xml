@@ -1,0 +1,7 @@
+<field key="image_version" type="text">
+    <default>property</default>
+    <default_value>latest</default_value>
+    <var>version:</var>
+    <filepath>docker-config.yml</filepath>
+    <options>s</options>
+</field>

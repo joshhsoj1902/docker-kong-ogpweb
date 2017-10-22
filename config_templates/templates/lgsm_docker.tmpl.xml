@@ -1,0 +1,31 @@
+<game_config>
+  <game_key>lgsm_docker_linux32</game_key>
+  <game_name>1 LGSM Docker</game_name>
+  <server_exec_name>foo.sh</server_exec_name>
+  <console_log>ServerLog.txt</console_log>
+  <max_user_amount>8</max_user_amount>
+  <mods>
+    {{(datasource "snippets").mods_none | base64.Decode}}
+  </mods>
+  <replace_texts>
+    {{(datasource "snippets").replace_texts_port | base64.Decode}}
+    {{(datasource "snippets").replace_texts_image_namespace | base64.Decode}}
+    {{(datasource "snippets").replace_texts_image_name | base64.Decode}}
+    <text key="data_vol_1">
+      <default>(data-vol-1:\s*)(.*)</default>
+      <var>dataVol1: /</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
+    </text>
+    {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
+  </replace_texts>
+  <custom_fields>
+    {{(datasource "snippets").custom_fields_lgsm_gameservername | base64.Decode}}
+    {{(datasource "snippets").custom_fields_lgsm_updateinstallskip | base64.Decode}}
+    <!--
+    {{(datasource "snippets").custom_fields_lgsm_gamemode_text | base64.Decode}}
+    {{(datasource "snippets").custom_fields_lgsm_defaultmap_text | base64.Decode}}
+    -->
+    {{(datasource "snippets").custom_fields_image_version | base64.Decode}}
+  </custom_fields>
+</game_config>

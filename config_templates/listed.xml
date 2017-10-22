@@ -1,0 +1,37 @@
+<game_config>
+  <game_key>lgsm_docker_listed_linux32</game_key>
+  <game_name>1 LGSM Listed Docker</game_name>
+  <max_user_amount>8</max_user_amount>
+  <mods>
+    <mod key="none">
+      <name>none</name>
+    </mod>
+  </mods>
+  <replace_texts>
+    <text key="data_vol_1">
+      <default>(data-vol-1:\s*)(.*)</default>
+      <var>dataVol1: /</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
+    </text>
+    <text key="max_players">
+      <default>(maxplayers:\s*)(.*)</default>
+      <var>maxplayers:</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
+    </text>
+  </replace_texts>
+  <custom_fields>
+
+    <field key="lgsm_gameservername" type="select">
+      <option value="gmodserver">Gmod</option>
+      <option value="l4d2server">L4D2</option>
+      <option value="l4dserver">L4D</option>
+      <default>property</default>
+      <default_value>gmodserver</default_value>
+      <var>      - LGSM_GAMESERVERNAME=</var>
+      <filepath>docker-environment.yml</filepath>
+      <desc>Which game type to start</desc>
+    </field>
+  </custom_fields>
+</game_config>

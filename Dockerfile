@@ -1,15 +1,25 @@
-# FROM python:latest as configs
+FROM ubuntu:16.04 as snippets
 
-# ADD xmlcombine.xml .
+ADD build-gomplate-snippets.sh .
+COPY config_templates config_templates
+RUN sh build-gomplate-snippets.sh
 
-# COPY modules/config_games/server_configs configs
 
-# RUN python xmlcombine.py ?.xml > combined.xml
+FROM hairyhenderson/gomplate as config
 
+COPY config_templates config_templates
+
+COPY --from=snippets /config_templates/gomplate_snippets/ ./config_templates/gomplate_snippets/
+
+RUN /gomplate -d snippets=file://./config_templates/gomplate_snippets/snippets.json \
+            -f config_templates/templates/lgsm_docker.tmpl.xml \
+            -o config_templates/lgsm_docker_foo.xml
+
+RUN cat config_templates/lgsm_docker_foo.xml
+
+RUN exit -1
 
 FROM joshhsoj1902/docker-ogpweb
-
-MAINTAINER joshhsoj1902
 
 #Only added for testing...
 RUN apt-get update \

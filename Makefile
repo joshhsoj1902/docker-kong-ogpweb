@@ -5,6 +5,21 @@ test-xml:
 test:
 	$(MAKE) build
 	$(MAKE) test-xml
+gomplate:
+	$(MAKE) build-gomplate-snippets
+
+build-gomplate-snippets:
+	rm -rf config_templates/gomplate_snippets
+	mkdir config_templates/gomplate_snippets
+	for f in config_templates/xml_snippets
+	do
+		basename=$(basename "$f")
+		filename="${basename%.*}"
+		echo "{" >> config_templates/gomplate_snippets/$(filename).json
+		cat config_templates/xml_snippets/$(filename).xml | base64 >> config_templates/gomplate_snippets/$(filename).json
+		echo "}" >> config_templates/gomplate_snippets/$(filename).json
+	done
+
 
 
 .PHONY: build test test-xml

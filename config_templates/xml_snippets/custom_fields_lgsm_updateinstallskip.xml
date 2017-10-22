@@ -1,0 +1,9 @@
+<field key="lgsm_updateinstallskip" type="select">
+    <option value="UPDATE">Update on startup</option>
+    <option value="INSTALL">Install game server</option>
+    <option value="SKIP">Don't install or update</option>
+    <default>property</default>
+    <default_value>UPDATE</default_value>
+    <var>      - LGSM_UPDATEINSTALLSKIP=</var>
+    <filepath>docker-environment.yml</filepath>
+</field>
