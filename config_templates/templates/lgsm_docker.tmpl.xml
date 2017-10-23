@@ -11,12 +11,7 @@
     {{(datasource "snippets").replace_texts_port | base64.Decode}}
     {{(datasource "snippets").replace_texts_image_namespace | base64.Decode}}
     {{(datasource "snippets").replace_texts_image_name | base64.Decode}}
-    <text key="data_vol_1">
-      <default>(data-vol-1:\s*)(.*)</default>
-      <var>dataVol1: /</var>
-      <filepath>docker-config.yml</filepath>
-      <options>s</options>
-    </text>
+    {{(datasource "snippets").replace_texts_data_vol_1_root | base64.Decode}}
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
   <custom_fields>

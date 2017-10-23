@@ -1,0 +1,6 @@
+<text key="data_vol_1">
+    <default>(data-vol-1:\s*)(.*)</default>
+    <var>dataVol1: /</var>
+    <filepath>docker-config.yml</filepath>
+    <options>s</options>
+</text>
