@@ -8,8 +8,6 @@ RUN mkdir gomplate_snippets \
 
 FROM hairyhenderson/gomplate as config
 
-# ENTRYPOINT [ "sh" ]
-
 ADD gomplate-build.sh .
 
 COPY config_templates/templates templates
@@ -20,8 +18,6 @@ RUN mkdir server_configs \
     && chmod +x ./gomplate-build.sh \ 
     && sleep 1 \
     &&./gomplate-build.sh
-
-RUN ls -ltr server_configs
 
 
 FROM joshhsoj1902/docker-ogpweb
@@ -42,12 +38,6 @@ RUN echo "terraria" >> /var/www/html/modules/gamemanager/rsync.list
 
 COPY www /var/www/html
 COPY --from=config server_configs/ /var/www/html/modules/config_games/server_configs/
-
-# COPY config_templates /var/www/html/modules/config_games/server_configs/
-
-RUN ls -ltr /var/www/html/modules/config_games/server_configs/
-
-RUN cat /var/www/html/modules/config_games/server_configs/lgsm_docker.xml
 
 ADD validate-xml-config.sh /
 RUN chmod 777 /validate-xml-config.sh
