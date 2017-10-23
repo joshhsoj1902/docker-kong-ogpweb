@@ -29,6 +29,10 @@ jobs:
           command: |
             make build
       - run:
+          name: "Test XML"
+          command: |
+            make test-xml
+      - run:
           name: "Test"
           command: |
             docker-compose up -d web

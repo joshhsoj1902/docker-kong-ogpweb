@@ -5,17 +5,10 @@
   <console_log>ServerLog.txt</console_log>
   <max_user_amount>8</max_user_amount>
   <mods>
-    <mod key="none">
-      <name>none</name>
-    </mod>
+    {{(datasource "snippets").mods_none | base64.Decode}}
   </mods>
   <replace_texts>
-    <text key="port">
-      <default>(port:\s*)(.*)</default>
-      <var>port:</var>
-      <filepath>docker-config.yml</filepath>
-      <options>s</options>
-    </text>
+    {{(datasource "snippets").replace_texts_port | base64.Decode}}
     <text key="image_namespace">
       <default>(namespace:\s*)(.*)</default>
       <var>namespace: joshhsoj1902</var>
@@ -28,12 +21,8 @@
       <filepath>docker-config.yml</filepath>
       <options>s</options>
     </text>
-    <text key="max_players">
-      <default>(maxplayers:\s*)(.*)</default>
-      <var>maxplayers:</var>
-      <filepath>docker-config.yml</filepath>
-      <options>s</options>
-    </text>
+    {{(datasource "snippets").replace_texts_data_vol_1_root | base64.Decode}}
+    {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
   <custom_fields>
     <field key="LGSM_GAMEMODE" type="text">
@@ -52,14 +41,8 @@
       <options></options>
       <desc>Should Spawn be protected</desc>
     </field>
-    <field key="image_version" type="text">
-      <default>property</default>
-      <default_value>latest</default_value>
-      <var>version:</var>
-      <filepath>docker-config.yml</filepath>
-      <options>s</options>
-      <desc>Should Spawn be protected</desc>
-    </field>
+    {{(datasource "snippets").custom_fields_image_version | base64.Decode}}
+
 
 
 

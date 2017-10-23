@@ -1,0 +1,6 @@
+<text key="port">
+  <default>(port:\s*)(.*)</default>
+  <var>port:</var>
+  <filepath>docker-config.yml</filepath>
+  <options>s</options>
+</text>

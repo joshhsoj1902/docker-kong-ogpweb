@@ -1,0 +1,6 @@
+<text key="image_namespace">
+    <default>(namespace:\s*)(.*)</default>
+    <var>namespace: joshhsoj1902</var>
+    <filepath>docker-config.yml</filepath>
+    <options>s</options>
+</text>

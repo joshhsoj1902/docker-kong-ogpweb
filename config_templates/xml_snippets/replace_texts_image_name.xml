@@ -1,0 +1,6 @@
+<text key="image_name">
+    <default>(image:\s*)(.*)</default>
+    <var>image: linuxgsm-docker</var>
+    <filepath>docker-config.yml</filepath>
+    <options>s</options>
+</text>

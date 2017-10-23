@@ -1,0 +1,7 @@
+<field key="LGSM_DEFAULTMAP" type="text">
+    <default>property</default>
+    <default_value>gm_construct</default_value>
+    <var>      - LGSM_DEFAULTMAP=</var>
+    <filepath>docker-environment.yml</filepath>
+    <options></options>
+</field>
