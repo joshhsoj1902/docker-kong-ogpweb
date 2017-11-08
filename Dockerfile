@@ -22,6 +22,8 @@ RUN mkdir server_configs \
 
 FROM joshhsoj1902/docker-ogpweb
 
+RUN rm /var/www/html/index.html
+
 #Only added for testing...
 RUN apt-get update \
  && apt-get -y install tidy libxml2-utils

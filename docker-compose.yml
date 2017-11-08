@@ -4,7 +4,7 @@ services:
     image: joshhsoj1902/docker-kong-ogpweb
     restart: always
     environment:
-      - OGP_INSTALL=false
+      - OGP_INSTALL=true
       - MYSQL_IP=my_db
       - MYSQL_PORT=3306
       - MYSQL_DBNAME=opengamepanel
