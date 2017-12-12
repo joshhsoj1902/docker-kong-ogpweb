@@ -1,6 +1,7 @@
 <game_config>
   <game_key>gmod_docker_linux32</game_key>
-  <game_name>1 Gmod Docker</game_name>
+  <game_name>Gmod (Docker)</game_name>
+  <installer>steamcmd</installer>
   <server_exec_name>foo.sh</server_exec_name>
   <console_log>ServerLog.txt</console_log>
   <max_user_amount>8</max_user_amount>
