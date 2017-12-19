@@ -1,0 +1,8 @@
+<field key="LGSM_WORKSHOPAUTH" type="text">
+    <default>property</default>
+    <default_value></default_value>
+    <var>      - LGSM_WORKSHOPAUTH=</var>
+    <filepath>docker-environment.yml</filepath>
+    <options></options>
+    <desc></desc>
+</field>
