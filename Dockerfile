@@ -4,6 +4,7 @@ ADD build-gomplate-snippets.sh .
 COPY config_templates/xml_snippets xml_snippets
 RUN mkdir gomplate_snippets \
     && sh build-gomplate-snippets.sh
+RUN cat gomplate_snippets/snippets.json
 
 
 FROM hairyhenderson/gomplate as config

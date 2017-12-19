@@ -43,95 +43,9 @@
       <options></options>
       <desc>Which map to start on</desc>
     </field>
-    <field key="LGSM_WORKSHOPCOLLECTIONID" type="text">
-      <default>property</default>
-      <default_value></default_value>
-      <var>      - LGSM_WORKSHOPCOLLECTIONID=</var>
-      <filepath>docker-environment.yml</filepath>
-      <options></options>
-      <desc></desc>
-    </field>
-    <field key="LGSM_WORKSHOPAUTH" type="text">
-      <default>property</default>
-      <default_value></default_value>
-      <var>      - LGSM_WORKSHOPAUTH=</var>
-      <filepath>docker-environment.yml</filepath>
-      <options></options>
-      <desc></desc>
-    </field>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <field key="tagValueByName" type="text">
-      <default>property</default>
-      <default_value>40</default_value>
-      <var>tagValueByName</var>
-      <filepath>docker-test.yml</filepath>
-      <options>tagValueByName</options>
-      <desc>How many minutes should 24 hours take</desc>
-    </field>
-    <field key="tags" type="text">
-      <default>property</default>
-      <default_value>40</default_value>
-      <var>tags</var>
-      <filepath>docker-test.yml</filepath>
-      <options>tags</options>
-      <desc>tags</desc>
-    </field>
-    <field key="q" type="text">
-      <default>property</default>
-      <default_value>40</default_value>
-      <var>q</var>
-      <filepath>docker-test.yml</filepath>
-      <options>q</options>
-      <desc>q</desc>
-    </field>
-    <field key="s" type="text">
-      <default>property</default>
-      <default_value>40</default_value>
-      <var>s</var>
-      <filepath>docker-test.yml</filepath>
-      <options>s</options>
-      <desc>s</desc>
-    </field>
-    <field key="sq" type="text">
-      <default>property</default>
-      <default_value>40</default_value>
-      <var>sq</var>
-      <filepath>docker-test.yml</filepath>
-      <options>sq</options>
-      <desc>sq</desc>
-    </field>
-    <field key="sc" type="text">
-      <default>property</default>
-      <default_value>40</default_value>
-      <var>sc</var>
-      <filepath>docker-test.yml</filepath>
-      <options>sc</options>
-      <desc>sc</desc>
-    </field>
-    <field key="sqc" type="text">
-      <default>property</default>
-      <default_value>40</default_value>
-      <var>sqc</var>
-      <filepath>docker-test.yml</filepath>
-      <options>sqc</options>
-      <desc>sqc</desc>
-    </field>
-
+    {{(datasource "snippets").custom_fields_lgsm_workshopcollectionid_text | base64.Decode}}
+    {{(datasource "snippets").custom_fields_lgsm_workshopauth_text | base64.Decode}}
+    {{(datasource "snippets").custom_fields_test_ogp | base64.Decode}}
   </custom_fields>
 </game_config>
