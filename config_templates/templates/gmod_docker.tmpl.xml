@@ -16,12 +16,6 @@
       <filepath>docker-config.yml</filepath>
       <options>s</options>
     </text>
-    <!-- <text key="image_name">
-      <default>(image:\s*)(.*)</default>
-      <var>image: github-joshhsoj1902-gmod-docker</var>
-      <filepath>docker-config.yml</filepath>
-      <options>s</options>
-    </text> -->
     {{(datasource "snippets").replace_texts_data_vol_1_root | base64.Decode}}
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
