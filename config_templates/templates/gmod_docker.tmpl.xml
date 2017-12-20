@@ -16,18 +16,24 @@
       <filepath>docker-config.yml</filepath>
       <options>s</options>
     </text>
+    <text key="image_name">		
+      <default>(image:\s*)(.*)</default>		
+      <var>image: gmod</var>		
+      <filepath>docker-config.yml</filepath>		
+      <options>s</options>		
+    </text>
     {{(datasource "snippets").replace_texts_data_vol_1_root | base64.Decode}}
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
   <custom_fields>
-    <field key="image_name" type="select">
+    <!-- <field key="image_name" type="select">
       <option value="github-joshhsoj1902-gmod-docker">Vanilla</option>
       <option value="github-joshhsoj1902-agent-gmod-docker">Agent</option>
       <default>(image:\s*)(.*)</default>
       <default_value>github-joshhsoj1902-gmod-docker</default_value>
       <var>image: </var>
       <filepath>docker-config.yml</filepath>
-    </field>
+    </field> -->
     {{(datasource "snippets").custom_fields_image_version | base64.Decode}}
     <field key="LGSM_GAMEMODE" type="text">
       <default>property</default>
