@@ -1,5 +1,6 @@
 <game_config>
   <game_key>lgsm_docker_linux32</game_key>
+  <installer>steamcmd</installer>    
   <game_name>1 LGSM Docker</game_name>
   <server_exec_name>foo.sh</server_exec_name>
   <console_log>ServerLog.txt</console_log>

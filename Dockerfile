@@ -7,7 +7,7 @@ RUN mkdir gomplate_snippets \
 RUN cat gomplate_snippets/snippets.json
 
 
-FROM hairyhenderson/gomplate as config
+FROM hairyhenderson/gomplate:v2.0.0-slim as config
 
 ADD gomplate-build.sh .
 
@@ -18,7 +18,7 @@ COPY --from=snippets gomplate_snippets/ ./gomplate_snippets/
 RUN mkdir server_configs \
     && chmod +x ./gomplate-build.sh \ 
     && sleep 1 \
-    &&./gomplate-build.sh
+    && ./gomplate-build.sh
 
 
 FROM joshhsoj1902/docker-ogpweb
@@ -26,16 +26,6 @@ FROM joshhsoj1902/docker-ogpweb
 #Only added for testing...
 RUN apt-get update \
  && apt-get -y install tidy libxml2-utils
-
-# Setup rsync server
-RUN echo "kong.dustless.club" > /var/www/html/modules/gamemanager/rsync_sites_local.list
-
-# Remove default rsync servers
-RUN echo "" > /var/www/html/modules/gamemanager/rsync_sites.list
-
-# Setup rsync games
-RUN echo "openttd" >> /var/www/html/modules/gamemanager/rsync.list
-RUN echo "terraria" >> /var/www/html/modules/gamemanager/rsync.list
 
 COPY www /var/www/html
 COPY --from=config server_configs/ /var/www/html/modules/config_games/server_configs/
