@@ -6,4 +6,7 @@ test:
 	$(MAKE) build
 	$(MAKE) test-xml
 
+composeup:
+	docker-compose up -d
+
 .PHONY: build test test-xml
