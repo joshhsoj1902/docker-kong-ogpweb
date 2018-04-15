@@ -1,4 +1,4 @@
-FROM ubuntu:16.04 as snippets
+FROM ubuntu:16.04@sha256:9ee3b83bcaa383e5e3b657f042f4034c92cdd50c03f73166c145c9ceaea9ba7c as snippets
 
 ADD build-gomplate-snippets.sh .
 COPY config_templates/xml_snippets xml_snippets
@@ -7,7 +7,7 @@ RUN mkdir gomplate_snippets \
 RUN cat gomplate_snippets/snippets.json
 
 
-FROM hairyhenderson/gomplate:v2.0.0-slim as config
+FROM hairyhenderson/gomplate:v2.0.0-slim@sha256:c4dd5588cfc4a27ec59a1cb47edea36f421ac7803028781a5d81ca0bdba66967 as config
 
 ADD gomplate-build.sh .
 
@@ -21,7 +21,7 @@ RUN mkdir server_configs \
     && ./gomplate-build.sh
 
 
-FROM joshhsoj1902/docker-ogpweb
+FROM joshhsoj1902/docker-ogpweb:latest@sha256:ae4d72f3c902111d91c75eadb55cf44cb82831279100a5903f7e3d9add7722e8
 
 #Only added for testing...
 RUN apt-get update \
