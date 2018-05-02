@@ -1,0 +1,59 @@
+<game_config>
+  <game_key>7dtd_docker_linux32</game_key>
+  <installer>steamcmd</installer>  
+  <game_name>7dtd (Docker)</game_name>
+  <server_exec_name>foo.sh</server_exec_name>
+  <console_log>ServerLog.txt</console_log>
+  <max_user_amount>20</max_user_amount>
+  <mods>
+    {{(datasource "snippets").mods_none | base64.Decode}}
+  </mods>
+  <replace_texts>
+    {{(datasource "snippets").replace_texts_port | base64.Decode}}
+    <text key="image_namespace">
+      <default>(namespace:\s*)(.*)</default>
+      <var>namespace: gcr.io/dustless-188617</var>
+      <filepath>docker-config.yml</filepath>
+      <options>s</options>
+    </text>
+    <text key="image_name">		
+      <default>(image:\s*)(.*)</default>		
+      <var>image: 7dtd</var>		
+      <filepath>docker-config.yml</filepath>		
+      <options>s</options>		
+    </text>
+    {{(datasource "snippets").replace_texts_data_vol_1_root | base64.Decode}}
+    {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
+  </replace_texts>
+  <custom_fields>
+    <!-- <field key="image_name" type="select">
+      <option value="github-joshhsoj1902-gmod-docker">Vanilla</option>
+      <option value="github-joshhsoj1902-agent-gmod-docker">Agent</option>
+      <default>(image:\s*)(.*)</default>
+      <default_value>github-joshhsoj1902-gmod-docker</default_value>
+      <var>image: </var>
+      <filepath>docker-config.yml</filepath>
+    </field> -->
+    {{(datasource "snippets").custom_fields_image_version | base64.Decode}}
+    <!-- <field key="LGSM_GAMEMODE" type="text">
+      <default>property</default>
+      <default_value>sandbox</default_value>
+      <var>      - LGSM_GAMEMODE=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Game mode</desc>
+    </field>
+    <field key="LGSM_DEFAULTMAP" type="text">
+      <default>property</default>
+      <default_value>gm_construct</default_value>
+      <var>      - LGSM_DEFAULTMAP=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Which map to start on</desc>
+    </field> -->
+
+    {{(datasource "snippets").custom_fields_lgsm_workshopcollectionid_text | base64.Decode}}
+    {{(datasource "snippets").custom_fields_lgsm_workshopauth_text | base64.Decode}}
+    {{(datasource "snippets").custom_fields_test_ogp | base64.Decode}}
+  </custom_fields>
+</game_config>
