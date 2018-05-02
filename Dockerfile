@@ -23,6 +23,25 @@ RUN mkdir server_configs \
 
 FROM joshhsoj1902/docker-ogpweb:latest@sha256:ae4d72f3c902111d91c75eadb55cf44cb82831279100a5903f7e3d9add7722e8
 
+# Remove templates that I'll never need
+RUN cd "/var/www/html/modules/config_games/server_configs" \
+  && rm *win* \
+  && rm zps.xml xonotic*.xml wolfrtcw*.xml wolfet*.xml \
+  && rm warsow*.xml vicecitymp*.xml ventrilo*.xml vbox*.xml \
+  && rm ut3*.xml ut2004*.xml urban*.xml unreal*.xml track*.xml \
+  && rm tfc.xml teamspeak*.xml squad*.xml soldat*.xml smokin*.xml \
+  && rm shoutcast*.xml shootmania*.xml sanandreasmp*.xml rust*.xml \
+  && rm ror*.xml ricochet*.xml quake*.xml nuclear*.xml nmrih*.xml \
+  && rm nexuiz*.xml natural*.xml multitheftauto*.xml mohsp*.xml \
+  && rm pvkii*.xml mohaa*.xml tf2.xml \
+  && rm mafia*.xml jedi*.xml jcmp*.xml ivmp*.xml insurgency*.xml \
+  && rm hurtworld*.xml hidden*.xml freecol*.xml fistful*.xml fgms*.xml \
+  && rm esmod*.xml dystopia*.xml dontstarve*.xml doi.xml dods.xml dod.xml \
+  && rm dmc.xml dayz*.xml czero*.xml cspro*.xml csgo*.xml cs2d*.xml \
+  && rm counterstrike*.xml callofduty*.xml brain*.xml blood*.xml \
+  && rm big*.xml bf*.xml avorion*.xml assettocorsa*.xml arma*.xml \
+  && rm aoc*.xml Synergy*.xml Smashball*.xml
+
 #Only added for testing...
 RUN apt-get update \
  && apt-get -y install tidy libxml2-utils
