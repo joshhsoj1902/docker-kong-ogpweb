@@ -52,8 +52,6 @@
       <desc>Which map to start on</desc>
     </field> -->
 
-    {{(datasource "snippets").custom_fields_lgsm_workshopcollectionid_text | base64.Decode}}
-    {{(datasource "snippets").custom_fields_lgsm_workshopauth_text | base64.Decode}}
     {{(datasource "snippets").custom_fields_test_ogp | base64.Decode}}
   </custom_fields>
 </game_config>
