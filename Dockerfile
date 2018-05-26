@@ -1,4 +1,4 @@
-FROM ubuntu:16.04@sha256:9ee3b83bcaa383e5e3b657f042f4034c92cdd50c03f73166c145c9ceaea9ba7c as snippets
+FROM ubuntu:16.04@sha256:7a3b062531155aa4aee0f0e01a3f4440c86dcf972b1b73ec5d988ae438bb2651 as snippets
 
 ADD build-gomplate-snippets.sh .
 COPY config_templates/xml_snippets xml_snippets
@@ -21,7 +21,7 @@ RUN mkdir server_configs \
     && ./gomplate-build.sh
 
 
-FROM joshhsoj1902/docker-ogpweb:latest@sha256:ae4d72f3c902111d91c75eadb55cf44cb82831279100a5903f7e3d9add7722e8
+FROM joshhsoj1902/docker-ogpweb:latest@sha256:df204d2fa26f37418f29f37fcaf4fb5786760b5b6088c655b131c09c2a197ae1
 
 # Remove templates that I'll never need
 RUN cd "/var/www/html/modules/config_games/server_configs" \
