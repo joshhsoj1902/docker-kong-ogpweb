@@ -22,7 +22,7 @@
       <filepath>docker-config.yml</filepath>		
       <options>s</options>		
     </text>
-    {{(datasource "snippets").replace_texts_data_vol_1_root | base64.Decode}}
+    {{(datasource "snippets").replace_texts_data_vol_1_7dtd | base64.Decode}}
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
   <custom_fields>
@@ -52,6 +52,6 @@
       <desc>Which map to start on</desc>
     </field> -->
 
-    {{(datasource "snippets").custom_fields_test_ogp | base64.Decode}}
+    <!-- {{(datasource "snippets").custom_fields_test_ogp | base64.Decode}} -->
   </custom_fields>
 </game_config>
