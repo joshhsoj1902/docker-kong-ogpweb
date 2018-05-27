@@ -40,10 +40,17 @@
       <filepath>docker-config.yml</filepath>
     </field> -->
     {{(datasource "snippets").custom_fields_image_version | base64.Decode}}
-    <field key="LGSM_SERVER_NAME" type="text">
+    <field key="Server Name" type="text">
       <default>property</default>
-      <default_value>World Seed</default_value>
+      <default_value>My Server</default_value>
       <var>      - LGSM_SERVER_NAME=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+    </field>
+    <field key="World Seed" type="text">
+      <default>property</default>
+      <default_value>WorldSeed</default_value>
+      <var>      - LGSM_GAME_NAME=</var>
       <filepath>docker-environment.yml</filepath>
       <options></options>
     </field>
