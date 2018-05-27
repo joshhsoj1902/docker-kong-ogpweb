@@ -1,6 +1,0 @@
-<text key="data_vol_1">
-    <default>(data-vol-1:\s*)(.*)</default>
-    <var>dataVol1: /Data/Worlds/Random Gen</var>
-    <filepath>docker-config.yml</filepath>
-    <options>s</options>
-</text>
