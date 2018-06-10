@@ -40,6 +40,7 @@
       <filepath>docker-config.yml</filepath>
     </field> -->
     {{(datasource "snippets").custom_fields_image_version | base64.Decode}}
+    <!-- This field should come from the main page. not a custom config -->
     <field key="Server Name" type="text">
       <default>property</default>
       <default_value>My Server</default_value>
@@ -53,14 +54,180 @@
       <var>      - LGSM_GAME_NAME=</var>
       <filepath>docker-environment.yml</filepath>
       <options></options>
+      <desc>The seed for Random Gen</desc>
     </field>
-    <field key="LGSM_SERVER_WORLD" type="text">
+    <field key="LGSM_GAME_WORLD" type="text">
       <default>property</default>
       <default_value>Random Gen</default_value>
-      <var>      - LGSM_SERVER_WORLD=</var>
+      <var>      - LGSM_GAME_WORLD=</var>
       <filepath>docker-environment.yml</filepath>
       <options></options>
     </field>
+
+    <field key="Password" type="text">
+      <default>property</default>
+      <default_value></default_value>
+      <var>      - LGSM_SERVER_PASSWORD=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Password to gain entry to the server</desc>
+    </field>
+    <field key="Server Description" type="text">
+      <default>property</default>
+      <default_value>A 7 Days to Die server</default_value>
+      <var>      - LGSM_SERVER_DESCRIPTION=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Whatever you want the description to be.</desc>
+    </field>
+   <field key="Difficulty" type="text">
+      <default>property</default>
+      <default_value>2</default_value>
+      <var>      - LGSM_GAME_DIFFICULTY=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>0 - 5, 0=easiest, 5=hardest</desc>
+    </field>
+    <field key="Zombie Difficulty" type="text">
+      <default>property</default>
+      <default_value>0</default_value>
+      <var>      - LGSM_ENEMY_DIFFICULTY=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>0 = Normal, 1 = Feral</desc>
+    </field>
+    <field key="Zombies Run" type="text">
+      <default>property</default>
+      <default_value>0</default_value>
+      <var>      - LGSM_ZOMBIES_RUN=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>0 = default day/night walk/run, 1 = never run, 2 = always run</desc>
+    </field>
+    <field key="Day Night Length" type="text">
+      <default>property</default>
+      <default_value>60</default_value>
+      <var>      - LGSM_DAY_NIGHT_LENGTH=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Real time minutes per in game day: 60 minutes</desc>
+    </field>
+    <field key="Day Light Length" type="text">
+      <default>property</default>
+      <default_value>18</default_value>
+      <var>      - LGSM_DAY_LIGHT_LENGTH=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>In game hours the sun shines per day: 18 hours day light per day</desc>
+    </field>
+    <field key="PVP Mode" type="text">
+      <default>property</default>
+      <default_value>3</default_value>
+      <var>      - LGSM_PLAYER_KILLING_MODE=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Player Killing Settings (0 = No Killing, 1 = Kill Allies Only, 2 = Kill Strangers Only, 3 = Kill Everyone)</desc>
+    </field>
+    <field key="Safe Zone Level" type="text">
+      <default>property</default>
+      <default_value>5</default_value>
+      <var>      - LGSM_PLAYERS_SAFE_ZONE_LEVEL=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>If a player is less or equal this level he will create a safe zone (no enemies) when spawned</desc>
+    </field>
+    <field key="Safe Zone Hours" type="text">
+      <default>property</default>
+      <default_value>5</default_value>
+      <var>      - LGSM_PLAYERS_SAFE_ZONE_HOURS=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Hours in world time this safe zone exists</desc>
+    </field>
+    <field key="Drop on death" type="text">
+      <default>property</default>
+      <default_value>2</default_value>
+      <var>      - LGSM_DROP_ON_DEATH=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>0 = everything, 1 = toolbelt only, 2 = backpack only, 3 = delete all</desc>
+    </field>
+    <field key="Drop on quit" type="text">
+      <default>property</default>
+      <default_value>0</default_value>
+      <var>      - LGSM_DROP_ON_QUIT=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>0 = nothing, 1 = everything, 2 = toolbelt only, 3 = backpack only</desc>
+    </field>
+    <field key="Blood Moon Enemy Count" type="text">
+      <default>property</default>
+      <default_value>8</default_value>
+      <var>      - LGSM_BLOOD_MOON_ENEMY_COUNT=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>The number of zombies spawned during blood moons per player.</desc>
+    </field>
+    <field key="Loot Abundance" type="text">
+      <default>property</default>
+      <default_value>100</default_value>
+      <var>      - LGSM_LOOT_ABUNDANCE=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Percentage in whole number.</desc>
+    </field>
+    <field key="Loot Respawn Days" type="text">
+      <default>property</default>
+      <default_value>30</default_value>
+      <var>      - LGSM_LOOT_RESPAWN_DAYS=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Days in whole numbers</desc>
+    </field>
+    <field key="Air Drop Frequency" type="text">
+      <default>property</default>
+      <default_value>72</default_value>
+      <var>      - LGSM_AIR_DROP_FREQUENCY=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>How often airdrop occur in game-hours, 0 == never</desc>
+    </field>
+    <field key="Air Drop Marker" type="text">
+      <default>property</default>
+      <default_value>false</default_value>
+      <var>      - LGSM_AIR_DROP_MAKER=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Sets if a marker is added to map/compass for air drops.</desc>
+    </field>
+    <field key="Max Zombies" type="text">
+      <default>property</default>
+      <default_value>60</default_value>
+      <var>      - LGSM_MAX_SPAWNED_ZOMBIES=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Making this number too large (more than about 80) may cause servers to run at poor framerates which will effect lag and play quality for clients.</desc>
+    </field>
+    <field key="Max Animals" type="text">
+      <default>property</default>
+      <default_value>50</default_value>
+      <var>      - LGSM_MAX_SPAWNED_ANIMALS=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+    </field>
+    <field key="EAC" type="text">
+      <default>property</default>
+      <default_value>true</default_value>
+      <var>      - LGSM_EAC_ENABLED=</var>
+      <filepath>docker-environment.yml</filepath>
+      <options></options>
+      <desc>Enables/Disables EasyAntiCheat</desc>
+    </field>
+
+
+
+
+
     <!-- <field key="LGSM_GAMEMODE" type="text">
       <default>property</default>
       <default_value>sandbox</default_value>
