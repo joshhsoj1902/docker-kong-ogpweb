@@ -21,7 +21,7 @@ RUN mkdir server_configs \
     && ./gomplate-build.sh
 
 
-FROM joshhsoj1902/docker-ogpweb:latest@sha256:df204d2fa26f37418f29f37fcaf4fb5786760b5b6088c655b131c09c2a197ae1
+FROM joshhsoj1902/docker-ogpweb:latest@sha256:d0d70820134535dda39fa13ab355a0c2c5c5219a0df079007dd7473511b80d7c
 
 # Remove templates that I'll never need
 RUN cd "/var/www/html/modules/config_games/server_configs" \
