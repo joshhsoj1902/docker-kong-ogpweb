@@ -1,4 +1,4 @@
-FROM ubuntu:16.04@sha256:689aa49d87d325f951941d789f7f7c8fae3394490cbcf084144caddba9c1be12 as snippets
+FROM ubuntu:16.04@sha256:0d06090fff94c0a3640729c7ef7e6b36ad5b41bec600cc2be92739c90d204243 as snippets
 
 ADD build-gomplate-snippets.sh .
 COPY config_templates/xml_snippets xml_snippets
