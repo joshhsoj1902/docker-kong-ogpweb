@@ -7,7 +7,7 @@ RUN mkdir gomplate_snippets \
 RUN cat gomplate_snippets/snippets.json
 
 
-FROM hairyhenderson/gomplate:v2.0.0-slim@sha256:6573a8e1d1362a8d6b91091559c1800e89171be081340be659e949c1347d6f65 as config
+FROM hairyhenderson/gomplate:v2.0.0-slim@sha256:c4dd5588cfc4a27ec59a1cb47edea36f421ac7803028781a5d81ca0bdba66967 as config
 
 ADD gomplate-build.sh .
 
