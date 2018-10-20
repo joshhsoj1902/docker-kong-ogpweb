@@ -32,7 +32,7 @@ services:
       - /var/lib/mysql
   agent:
     restart: always
-    image: joshhsoj1902/docker-ogpagent-docker
+    image: joshhsoj1902/docker-ogpagent-docker:latest
     ports:
      - "12679:12679"
     volumes:
@@ -41,3 +41,5 @@ services:
       - OGP_LISTEN_PORT=12679
       - OGP_KEY=encryption_key2
       - OGP_DOCKER_NAMESPACE=joshhsoj1902
+      - STORAGE=local
+
