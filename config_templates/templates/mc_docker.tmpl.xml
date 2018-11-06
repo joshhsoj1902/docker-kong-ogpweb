@@ -47,7 +47,7 @@
 
     {{ template "replace_text" dict "key" "image_namespace"   "field" "namespace"   "value" "gcr.io/dustless-188617"   "options" "s" }}
     {{ template "replace_text" dict "key" "image_name"   "field" "image"   "value" "mc"   "options" "s" }}
-    {{ template "replace_text" dict "key" "data_vol_1"   "field" "dataVol1"   "value" "/Saves"   "options" "s" }}
+    {{ template "replace_text" dict "key" "data_vol_1"   "field" "dataVol1"   "value" "/"   "options" "s" }}
 
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
