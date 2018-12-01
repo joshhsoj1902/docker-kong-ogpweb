@@ -1,3 +1,12 @@
+{{ define "replace_text" -}}
+    <text key="{{ .key }}">
+      <default>({{ .field }}:\s*)(.*)</default>
+      <var>{{ .field }}: {{ .value }}</var>
+      <filepath>docker-config.yml</filepath>
+      <options>{{ .options }}</options>
+    </text>
+{{- end -}}
+
 <game_config>
   <game_key>7dtd_docker_linux32</game_key>
   <installer>steamcmd</installer>  
@@ -22,12 +31,8 @@
       <filepath>docker-config.yml</filepath>		
       <options>s</options>		
     </text>
-      <text key="data_vol_1">
-      <default>(data-vol-1:\s*)(.*)</default>
-      <var>dataVol1: /Saves</var>
-      <filepath>docker-config.yml</filepath>
-      <options>s</options>
-    </text>
+    {{ template "replace_text" dict "key" "data_vols"   "field" "dataVols"   "value" "Saves"   "options" "s" }}
+
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
   <custom_fields>
