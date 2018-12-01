@@ -1,54 +1,14 @@
-{{ define "header" -}}
-  <game_key>{{ .gameId }}_docker_linux32</game_key>
-  <installer>steamcmd</installer> 
-  <game_name>{{ .gameId }} (Docker)</game_name>
-  <server_exec_name>foo.sh</server_exec_name>
-  <console_log>ServerLog.txt</console_log>
-  <max_user_amount>{{ .maxUsers }}</max_user_amount>
-{{- end -}}
-{{ define "replace_text" -}}
-    <text key="{{ .key }}">
-      <default>({{ .field }}:\s*)(.*)</default>
-      <var>{{ .field }}: {{ .value }}</var>
-      <filepath>docker-config.yml</filepath>
-      <options>{{ .options }}</options>
-    </text>
-{{- end -}}
-
-{{ define "custom_field_text" -}}
-    <field key="{{ .key }}" type="text">
-      <default>property</default> 
-      <default_value>{{ .default }}</default_value>
-      <var>      - {{ .var }}=</var>
-      <filepath>docker-environment.yml</filepath>
-      <options>{{ .options }}</options>
-    </field>
-{{- end -}}
-
-{{ define "custom_field_bool" -}}
-<field key="{{ .key }}" type="select">
-    <option value="true">true</option>
-    <option value="false">false</option>
-    <default>property</default>
-    <default_value>{{ .default }}</default_value>
-    <var>      - {{ .var }}=</var>
-    <filepath>docker-environment.yml</filepath>
-</field>
-{{- end -}}
-
-
 <game_config>
-    {{ template "header" dict "gameId" "mc"   "maxUsers" "20"}}
+    {{ template "common/header.t" dict "gameId" "mc"   "maxUsers" "20"}}
   <mods>
     {{(datasource "snippets").mods_none | base64.Decode}}
   </mods>
   <replace_texts>
     {{(datasource "snippets").replace_texts_port | base64.Decode}}
 
-    {{ template "replace_text" dict "key" "image_namespace"   "field" "namespace"   "value" "gcr.io/dustless-188617"   "options" "s" }}
-    {{ template "replace_text" dict "key" "image_name"   "field" "image"   "value" "mc"   "options" "s" }}
-    <!-- {{ template "replace_text" dict "key" "data_vol_1"   "field" "dataVol1"   "value" "/world"   "options" "s" }} -->
-    {{ template "replace_text" dict "key" "data_vols"   "field" "dataVols"   "value" "Saves,world,world_the_end,world_nether,Plugins"   "options" "s" }}
+    {{ template "common/replaceText.t" dict "key" "image_namespace"   "field" "namespace"   "value" "gcr.io/dustless-188617"   "options" "s" }}
+    {{ template "common/replaceText.t" dict "key" "image_name"   "field" "image"   "value" "mc"   "options" "s" }}
+    {{ template "common/replaceText.t" dict "key" "data_vols"   "field" "dataVols"   "value" "Saves,world,world_the_end,world_nether,Plugins"   "options" "s" }}
 
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
@@ -64,38 +24,38 @@
     </field> -->
     {{(datasource "snippets").custom_fields_image_version | base64.Decode}}
     <!-- This field should come from the main page. not a custom config -->
-      {{ template "custom_field_bool" dict "key" "allow-flight"   "default" "false"   "var" "LGSM_ALLOW_FLIGHT"  }}
-      {{ template "custom_field_bool" dict "key" "allow-nether"   "default" "true"   "var" "LGSM_ALLOW_NETHER"  }}
-      {{ template "custom_field_bool" dict "key" "announce-player-achievements"   "default" "true"   "var" "LGSM_ANNOUNCE_PLAYER_ACHIEVEMENTS"  }}
-      {{ template "custom_field_text" dict "key" "difficulty"   "default" "1"   "var" "LGSM_DIFFICULTY"   "options" "" }}
-      {{ template "custom_field_bool" dict "key" "enable-command-block"   "default" "false"   "var" "LGSM_ENABLE_COMMAND_BLOCK"  }}
-      {{ template "custom_field_bool" dict "key" "enable-query"   "default" "false"   "var" "LGSM_ENABLE_QUERY"  }}
-      {{ template "custom_field_bool" dict "key" "enable-rcon"   "default" "false"   "var" "LGSM_ENABLE_RCON"  }}
-      {{ template "custom_field_bool" dict "key" "force-gamemode"   "default" "false"   "var" "LGSM_FORCE_GAMEMODE"  }}
-      {{ template "custom_field_text" dict "key" "gamemode"   "default" "0"   "var" "LGSM_GAMEMODE"   "options" "" }}
-      {{ template "custom_field_bool" dict "key" "generate-structures"   "default" "true"   "var" "LGSM_GENERATOR_STRUCTURES"  }}
-      {{ template "custom_field_text" dict "key" "generator-settings"   "default" ""   "var" "LGSM_GENERATOR_SETTINGS"   "options" "" }}
-      {{ template "custom_field_bool" dict "key" "hardcore"   "default" "false"   "var" "LGSM_HARDCORE"  }}
-      {{ template "custom_field_text" dict "key" "level-name"   "default" "world"   "var" "LGSM_LEVEL_NAME"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "level-seed"   "default" ""   "var" "LGSM_LEVEL_SEED"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "level-type"   "default" "DEFAULT"   "var" "LGSM_LEVEL_TYPE"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "max-build-height"   "default" "256"   "var" "LGSM_MAX_BUILD_HEIGHT"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "max-players"   "default" "20"   "var" "LGSM_MAX_PLAYERS"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "max-tick-time"   "default" "60000"   "var" "LGSM_MAX_TICK_TIME"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "max-world-size"   "default" "29999984"   "var" "LGSM_MAX_WORLD_SIZE"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "motd"   "default" "A Minecraft Server"   "var" "LGSM_MOTD"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "network-compression-threshold"   "default" "256"   "var" "LGSM_NETWORK_COMPRESSION_THRESHOLD"   "options" "" }}
-      {{ template "custom_field_bool" dict "key" "online-mode"   "default" "true"   "var" "LGSM_ONLINE_MODE"  }}
-      {{ template "custom_field_text" dict "key" "op-permission-level"   "default" "4"   "var" "LGSM_OP_PERMISSION_LEVEL"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "player-idle-timeout"   "default" "0"   "var" "LGSM_PLAYER_IDLE_TIMEOUT"   "options" "" }}
-      {{ template "custom_field_bool" dict "key" "pvp"   "default" "true"   "var" "LGSM_PVP"  }}
-      {{ template "custom_field_text" dict "key" "rcon.password"   "default" "ADMINPASSWORD"   "var" "LGSM_RCON_PASSWORD"   "options" "" }}
-      {{ template "custom_field_text" dict "key" "server-ip"   "default" ""   "var" "LGSM_IP"   "options" "" }}
-      {{ template "custom_field_bool" dict "key" "snooper-enabled"   "default" "true"   "var" "LGSM_SNOOPER_ENABLED"  }}
-      {{ template "custom_field_bool" dict "key" "spawn-animals"   "default" "true"   "var" "LGSM_SPAWN_ANIMALS"  }}
-      {{ template "custom_field_bool" dict "key" "spawn-monsters"   "default" "true"   "var" "LGSM_SPAWN_MONSTERS"  }}
-      {{ template "custom_field_bool" dict "key" "spawn-npcs"   "default" "true"   "var" "LGSM_SPAWN_NPCS"  }}
-      {{ template "custom_field_bool" dict "key" "use-native-transport"   "default" "true"   "var" "LGSM_USE_NATIVE_TRANSPORT"  }}
-      {{ template "custom_field_text" dict "key" "view-distance"   "default" "10"   "var" "LGSM_VIEW_DISTANCE"   "options" "" }}
+      {{ template "common/customFieldBool.t" dict "key" "allow-flight"   "default" "false"   "var" "LGSM_ALLOW_FLIGHT"  }}
+      {{ template "common/customFieldBool.t" dict "key" "allow-nether"   "default" "true"   "var" "LGSM_ALLOW_NETHER"  }}
+      {{ template "common/customFieldBool.t" dict "key" "announce-player-achievements"   "default" "true"   "var" "LGSM_ANNOUNCE_PLAYER_ACHIEVEMENTS"  }}
+      {{ template "common/customFieldText.t" dict "key" "difficulty"   "default" "1"   "var" "LGSM_DIFFICULTY"   "options" "" }}
+      {{ template "common/customFieldBool.t" dict "key" "enable-command-block"   "default" "false"   "var" "LGSM_ENABLE_COMMAND_BLOCK"  }}
+      {{ template "common/customFieldBool.t" dict "key" "enable-query"   "default" "false"   "var" "LGSM_ENABLE_QUERY"  }}
+      {{ template "common/customFieldBool.t" dict "key" "enable-rcon"   "default" "false"   "var" "LGSM_ENABLE_RCON"  }}
+      {{ template "common/customFieldBool.t" dict "key" "force-gamemode"   "default" "false"   "var" "LGSM_FORCE_GAMEMODE"  }}
+      {{ template "common/customFieldText.t" dict "key" "gamemode"   "default" "0"   "var" "LGSM_GAMEMODE"   "options" "" }}
+      {{ template "common/customFieldBool.t" dict "key" "generate-structures"   "default" "true"   "var" "LGSM_GENERATOR_STRUCTURES"  }}
+      {{ template "common/customFieldText.t" dict "key" "generator-settings"   "default" ""   "var" "LGSM_GENERATOR_SETTINGS"   "options" "" }}
+      {{ template "common/customFieldBool.t" dict "key" "hardcore"   "default" "false"   "var" "LGSM_HARDCORE"  }}
+      {{ template "common/customFieldText.t" dict "key" "level-name"   "default" "world"   "var" "LGSM_LEVEL_NAME"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "level-seed"   "default" ""   "var" "LGSM_LEVEL_SEED"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "level-type"   "default" "DEFAULT"   "var" "LGSM_LEVEL_TYPE"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "max-build-height"   "default" "256"   "var" "LGSM_MAX_BUILD_HEIGHT"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "max-players"   "default" "20"   "var" "LGSM_MAX_PLAYERS"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "max-tick-time"   "default" "60000"   "var" "LGSM_MAX_TICK_TIME"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "max-world-size"   "default" "29999984"   "var" "LGSM_MAX_WORLD_SIZE"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "motd"   "default" "A Minecraft Server"   "var" "LGSM_MOTD"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "network-compression-threshold"   "default" "256"   "var" "LGSM_NETWORK_COMPRESSION_THRESHOLD"   "options" "" }}
+      {{ template "common/customFieldBool.t" dict "key" "online-mode"   "default" "true"   "var" "LGSM_ONLINE_MODE"  }}
+      {{ template "common/customFieldText.t" dict "key" "op-permission-level"   "default" "4"   "var" "LGSM_OP_PERMISSION_LEVEL"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "player-idle-timeout"   "default" "0"   "var" "LGSM_PLAYER_IDLE_TIMEOUT"   "options" "" }}
+      {{ template "common/customFieldBool.t" dict "key" "pvp"   "default" "true"   "var" "LGSM_PVP"  }}
+      {{ template "common/customFieldText.t" dict "key" "rcon.password"   "default" "ADMINPASSWORD"   "var" "LGSM_RCON_PASSWORD"   "options" "" }}
+      {{ template "common/customFieldText.t" dict "key" "server-ip"   "default" ""   "var" "LGSM_IP"   "options" "" }}
+      {{ template "common/customFieldBool.t" dict "key" "snooper-enabled"   "default" "true"   "var" "LGSM_SNOOPER_ENABLED"  }}
+      {{ template "common/customFieldBool.t" dict "key" "spawn-animals"   "default" "true"   "var" "LGSM_SPAWN_ANIMALS"  }}
+      {{ template "common/customFieldBool.t" dict "key" "spawn-monsters"   "default" "true"   "var" "LGSM_SPAWN_MONSTERS"  }}
+      {{ template "common/customFieldBool.t" dict "key" "spawn-npcs"   "default" "true"   "var" "LGSM_SPAWN_NPCS"  }}
+      {{ template "common/customFieldBool.t" dict "key" "use-native-transport"   "default" "true"   "var" "LGSM_USE_NATIVE_TRANSPORT"  }}
+      {{ template "common/customFieldText.t" dict "key" "view-distance"   "default" "10"   "var" "LGSM_VIEW_DISTANCE"   "options" "" }}
   </custom_fields>
 </game_config>

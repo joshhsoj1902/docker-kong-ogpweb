@@ -31,7 +31,7 @@
       <filepath>docker-config.yml</filepath>		
       <options>s</options>		
     </text>
-    {{ template "replace_text" dict "key" "data_vols"   "field" "dataVols"   "value" "Saves"   "options" "s" }}
+    {{ template "common/replaceText.t" dict "key" "data_vols"   "field" "dataVols"   "value" "Saves"   "options" "s" }}
 
     {{(datasource "snippets").replace_texts_max_players | base64.Decode}}
   </replace_texts>
