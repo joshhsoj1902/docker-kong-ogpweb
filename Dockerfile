@@ -7,7 +7,7 @@ RUN mkdir gomplate_snippets \
 RUN cat gomplate_snippets/snippets.json
 
 
-FROM hairyhenderson/gomplate:v3.1.0-alpine as config
+FROM hairyhenderson/gomplate:v3.9.0-alpine as config
 
 ADD gomplate-build.sh .
 
